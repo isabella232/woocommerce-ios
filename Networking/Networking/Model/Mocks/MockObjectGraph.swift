@@ -16,6 +16,11 @@ public protocol MockObjectGraph {
 }
 
 extension MockObjectGraph {
+
+    func product(forSiteId siteId: Int64, productId: Int64) -> Product {
+        return products(forSiteId: siteId).first { $0.productID == productId }!
+    }
+
     func products(forSiteId siteId: Int64) -> [Product] {
         return products.filter { $0.siteID == siteId }
     }

@@ -17,6 +17,7 @@ public struct MockProductRemote: ProductsRemoteProtocol {
     }
 
     public func loadProduct(for siteID: Int64, productID: Int64, completion: @escaping (Result<Product, Error>) -> Void) {
+        completion(.success(objectGraph.product(forSiteId: siteID, productId: productID)))
     }
 
     public func loadAllProducts(
