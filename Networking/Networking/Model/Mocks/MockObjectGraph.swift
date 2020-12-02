@@ -77,12 +77,6 @@ struct MockCustomer {
     }
 }
 
-extension ProductImage {
-    static func fromUrl(_ string: String) -> ProductImage {
-        ProductImage(imageID: 0, dateCreated: Date(), dateModified: nil, src: string, name: string.slugified, alt: string.slugified)
-    }
-}
-
 // MARK: Product Accessors
 extension MockObjectGraph {
 
@@ -140,13 +134,34 @@ extension MockObjectGraph {
     }
 }
 
+fileprivate let baseResourceUrl = "http://localhost:9285/"
+
 // MARK: Product Creation Helper
 extension MockObjectGraph {
-    static func createProduct(name: String, price: Decimal, salePrice: Decimal? = nil, quantity: Int64, siteId: Int64 = 1, image: ProductImage? = nil) -> Product {
 
-        Product(
+    static func createProduct(
+        name: String,
+        price: Decimal,
+        salePrice: Decimal? = nil,
+        quantity: Int64,
+        siteId: Int64 = 1,
+        image: ProductImage? = nil
+    ) -> Product {
+
+        let productId = ProductId.next
+
+        let defaultImage = ProductImage(
+            imageID: productId,
+            dateCreated: Date(),
+            dateModified: nil,
+            src: baseResourceUrl + name.slugified!,
+            name: name,
+            alt: name
+        )
+
+        return Product(
             siteID: siteId,
-            productID: ProductId.next,
+            productID: productId,
             name: name,
             slug: name.slugified!,
             permalink: "",
@@ -201,7 +216,7 @@ extension MockObjectGraph {
             purchaseNote: nil,
             categories: [],
             tags: [],
-            images: image != nil ? [image!] : [],
+            images: image != nil ? [image!] : [defaultImage],
             attributes: [],
             defaultAttributes: [],
             variations: [],

@@ -334,6 +334,8 @@
 		02FE89C9231FB31400E85EF8 /* FeatureFlagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE89C8231FB31400E85EF8 /* FeatureFlagService.swift */; };
 		02FE89CB231FB36600E85EF8 /* DefaultFeatureFlagService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02FE89CA231FB36600E85EF8 /* DefaultFeatureFlagService.swift */; };
 		241275F72575F240006B8CFF /* MockAuthenticatedState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241275F62575F240006B8CFF /* MockAuthenticatedState.swift */; };
+		2412769E25773AF6006B8CFF /* Embassy in Frameworks */ = {isa = PBXBuildFile; productRef = 2412769D25773AF6006B8CFF /* Embassy */; };
+		241276A425773EAF006B8CFF /* ScreenshotImages.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 241276A325773EAF006B8CFF /* ScreenshotImages.xcassets */; };
 		24F98C502502AEE200F49B68 /* EventLogging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F98C4F2502AEE200F49B68 /* EventLogging.swift */; };
 		260C315E2523CC4000157BC2 /* RefundProductsTotalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C315D2523CC4000157BC2 /* RefundProductsTotalViewModel.swift */; };
 		260C31602524ECA900157BC2 /* IssueRefundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260C315F2524ECA900157BC2 /* IssueRefundViewController.swift */; };
@@ -1381,6 +1383,7 @@
 		02FE89C8231FB31400E85EF8 /* FeatureFlagService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagService.swift; sourceTree = "<group>"; };
 		02FE89CA231FB36600E85EF8 /* DefaultFeatureFlagService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFeatureFlagService.swift; sourceTree = "<group>"; };
 		241275F62575F240006B8CFF /* MockAuthenticatedState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAuthenticatedState.swift; sourceTree = "<group>"; };
+		241276A325773EAF006B8CFF /* ScreenshotImages.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ScreenshotImages.xcassets; sourceTree = "<group>"; };
 		24C579D124F476300076E1B4 /* Woo-Alpha.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Woo-Alpha.entitlements"; sourceTree = "<group>"; };
 		24F98C4F2502AEE200F49B68 /* EventLogging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventLogging.swift; sourceTree = "<group>"; };
 		25D00C97936D2C6589F8ECE9 /* Pods-WooCommerce.release-alpha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WooCommerce.release-alpha.xcconfig"; path = "../Pods/Target Support Files/Pods-WooCommerce/Pods-WooCommerce.release-alpha.xcconfig"; sourceTree = "<group>"; };
@@ -2109,6 +2112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2412769E25773AF6006B8CFF /* Embassy in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4880,6 +4884,7 @@
 				F997170423DBB97500592D8E /* WooCommerceScreenshots.swift */,
 				F997173123DBCF1500592D8E /* Utils */,
 				F997170623DBB97500592D8E /* Info.plist */,
+				241276A325773EAF006B8CFF /* ScreenshotImages.xcassets */,
 			);
 			path = WooCommerceScreenshots;
 			sourceTree = "<group>";
@@ -5042,6 +5047,9 @@
 				F997170823DBB97500592D8E /* PBXTargetDependency */,
 			);
 			name = WooCommerceScreenshots;
+			packageProductDependencies = (
+				2412769D25773AF6006B8CFF /* Embassy */,
+			);
 			productName = WooCommerceScreenshots;
 			productReference = F997170223DBB97500592D8E /* WooCommerceScreenshots.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -5122,6 +5130,9 @@
 				nl,
 			);
 			mainGroup = B56DB3BD2049BFAA00D4AA8E;
+			packageReferences = (
+				2412769C25773AF6006B8CFF /* XCRemoteSwiftPackageReference "Embassy" */,
+			);
 			productRefGroup = B56DB3C72049BFAA00D4AA8E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -5335,6 +5346,7 @@
 				CCFC010123E9BD5500157A78 /* rest_v11_notifications_note_hashes.json in Resources */,
 				CCFC00EF23E9BD5500157A78 /* auth_options.json in Resources */,
 				CCFC010623E9BD5500157A78 /* stats_visits-year.json in Resources */,
+				241276A425773EAF006B8CFF /* ScreenshotImages.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -6955,7 +6967,23 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		2412769C25773AF6006B8CFF /* XCRemoteSwiftPackageReference "Embassy" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/envoy/Embassy";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		2412769D25773AF6006B8CFF /* Embassy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2412769C25773AF6006B8CFF /* XCRemoteSwiftPackageReference "Embassy" */;
+			productName = Embassy;
+		};
 		57150E0E24F462C200E81611 /* TestKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = TestKit;

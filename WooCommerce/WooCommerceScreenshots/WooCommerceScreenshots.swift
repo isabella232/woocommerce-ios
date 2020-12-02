@@ -1,4 +1,5 @@
 import XCTest
+import Embassy
 
 class WooCommerceScreenshots: XCTestCase {
 
@@ -7,6 +8,8 @@ class WooCommerceScreenshots: XCTestCase {
         continueAfterFailure = false
 
         XCUIDevice.shared.orientation = UIDeviceOrientation.portrait
+
+        startWebServer()
     }
 
     func testScreenshots() {
@@ -54,6 +57,9 @@ class WooCommerceScreenshots: XCTestCase {
             .selectProduct(atIndex: 1)
             .thenTakeScreenshot(named: "product-details")
     }
+
+    /// Event Loop for screenshots web server
+    private let loop = try! SelectorEventLoop(selector: try! KqueueSelector())
 }
 
 fileprivate var screenshotCount = 0
@@ -70,5 +76,58 @@ extension BaseScreen {
         snapshot(filename)
 
         return self
+    }
+}
+
+extension WooCommerceScreenshots {
+    func startWebServer() {
+        /// Run the web server on a background queue
+        DispatchQueue.global(qos: .userInitiated).async {
+
+            let server = DefaultHTTPServer(eventLoop: self.loop, port: 9285) {
+                (env: [String: Any], startResponse: ((String, [(String, String)]) -> Void), sendBody: ((Data) -> Void)
+                ) in
+
+                /// Extract the path, so http://localhost:9285/foo-bar would be `/foo-bar` here.
+                guard let path = env["PATH_INFO"] as? String else {
+                    startResponse("404 Not Found", [])
+                    sendBody(Data())
+                    return
+                }
+
+                /// Remove the leading `/`, so we're left with `foo-bar`
+                let assetName = path.replacingOccurrences(of: "/", with: "")
+
+                /// Lookup the `assetName` in this bundle
+                let bundle = Bundle(for: Self.self)
+
+                guard
+                    let image = UIImage(named: assetName, in: bundle, compatibleWith: nil),
+                    let data = image.pngData()
+                else {
+                    startResponse("404 Not Found", [])
+                    sendBody(Data())
+                    return
+                }
+
+                /// HTTP Header
+                startResponse("200 OK", [
+                    ("Content-Type", "image/png"),
+                    ("Content-Length", "\(data.count)")
+                ])
+
+                /// HTTP Body Data
+                sendBody(data)
+
+                /// HTTP EOF
+                sendBody(Data())
+            }
+
+            /// Start HTTP server to listen on the port
+            try! server.start()
+
+            /// Run event loop
+            self.loop.runForever()
+        }
     }
 }

@@ -144,18 +144,33 @@ extension ScreenshotObjects {
         static let roseGoldShades = createProduct(
             name: "Rose Gold Shades",
             price: 199.0,
-            quantity: 0,
-            image: ProductImage.fromUrl("https://automatticwidgets.com/wp-content/uploads/2020/01/annie-theby-FlP6C5pkMKs-unsplash.png")
+            quantity: 0
         )
 
-        static let blackCoralShades = createProduct(name: "Black Coral Shades", price: 150.00, quantity: -24)
+        static let blackCoralShades = createProduct(
+            name: "Black Coral Shades",
+            price: 150.00,
+            quantity: -24
+        )
 
-        static let malayaShades = createProduct(name: "Malaya Shades", price: 140.00, quantity: 17)
+        static let malayaShades = createProduct(
+            name: "Malaya Shades",
+            price: 140.00,
+            quantity: 17
+        )
 
-        static let coloradoShades = createProduct(name: "Colorado shades", price: 135, salePrice: 100, quantity: 98)
+        static let coloradoShades = createProduct(
+            name: "Colorado shades",
+            price: 135,
+            salePrice: 100,
+            quantity: 98
+        )
 
-        static let akoyaPearlShades = createProduct(name: "Akoya Pearl shades", price: 110, quantity: 23)
-
+        static let akoyaPearlShades = createProduct(
+            name: "Akoya Pearl shades",
+            price: 110,
+            quantity: 23
+        )
     }
 }
 
