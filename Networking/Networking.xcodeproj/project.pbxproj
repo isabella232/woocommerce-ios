@@ -72,6 +72,11 @@
 		2412764C2576E34D006B8CFF /* ScreenshotsObjectGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2412764A2576E34D006B8CFF /* ScreenshotsObjectGraph.swift */; };
 		241276522576F5FA006B8CFF /* MockSiteAPIRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241276512576F5FA006B8CFF /* MockSiteAPIRemote.swift */; };
 		241276972576F918006B8CFF /* MockOrdersRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241276962576F918006B8CFF /* MockOrdersRemote.swift */; };
+		24638C1B2578210400184156 /* MockSiteSettingsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24638C1A2578210400184156 /* MockSiteSettingsRemote.swift */; };
+		24638C2925784E7300184156 /* MockLeaderboardsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24638C2825784E7300184156 /* MockLeaderboardsRemote.swift */; };
+		24638C2F25784EB200184156 /* MockOrderStatsRemoteV4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24638C2E25784EB200184156 /* MockOrderStatsRemoteV4.swift */; };
+		24638C3525784F9400184156 /* MockSiteVisitStatsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24638C3425784F9400184156 /* MockSiteVisitStatsRemote.swift */; };
+		24638C3B2578559100184156 /* MockProductReviewsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24638C3A2578559100184156 /* MockProductReviewsRemote.swift */; };
 		24F98C522502E79800F49B68 /* FeatureFlagsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F98C512502E79800F49B68 /* FeatureFlagsRemote.swift */; };
 		24F98C542502E8DD00F49B68 /* Bundle+Woo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F98C532502E8DD00F49B68 /* Bundle+Woo.swift */; };
 		24F98C562502EA4800F49B68 /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F98C552502EA4800F49B68 /* FeatureFlag.swift */; };
@@ -469,6 +474,11 @@
 		2412764A2576E34D006B8CFF /* ScreenshotsObjectGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotsObjectGraph.swift; sourceTree = "<group>"; };
 		241276512576F5FA006B8CFF /* MockSiteAPIRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSiteAPIRemote.swift; sourceTree = "<group>"; };
 		241276962576F918006B8CFF /* MockOrdersRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOrdersRemote.swift; sourceTree = "<group>"; };
+		24638C1A2578210400184156 /* MockSiteSettingsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSiteSettingsRemote.swift; sourceTree = "<group>"; };
+		24638C2825784E7300184156 /* MockLeaderboardsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLeaderboardsRemote.swift; sourceTree = "<group>"; };
+		24638C2E25784EB200184156 /* MockOrderStatsRemoteV4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOrderStatsRemoteV4.swift; sourceTree = "<group>"; };
+		24638C3425784F9400184156 /* MockSiteVisitStatsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSiteVisitStatsRemote.swift; sourceTree = "<group>"; };
+		24638C3A2578559100184156 /* MockProductReviewsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockProductReviewsRemote.swift; sourceTree = "<group>"; };
 		24F98C512502E79800F49B68 /* FeatureFlagsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagsRemote.swift; sourceTree = "<group>"; };
 		24F98C532502E8DD00F49B68 /* Bundle+Woo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Woo.swift"; sourceTree = "<group>"; };
 		24F98C552502EA4800F49B68 /* FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
@@ -859,9 +869,14 @@
 			isa = PBXGroup;
 			children = (
 				241276422576E338006B8CFF /* MockAccountRemote.swift */,
-				241276432576E338006B8CFF /* MockProductRemote.swift */,
+				24638C2825784E7300184156 /* MockLeaderboardsRemote.swift */,
 				241276962576F918006B8CFF /* MockOrdersRemote.swift */,
+				24638C2E25784EB200184156 /* MockOrderStatsRemoteV4.swift */,
+				241276432576E338006B8CFF /* MockProductRemote.swift */,
+				24638C3A2578559100184156 /* MockProductReviewsRemote.swift */,
 				241276512576F5FA006B8CFF /* MockSiteAPIRemote.swift */,
+				24638C3425784F9400184156 /* MockSiteVisitStatsRemote.swift */,
+				24638C1A2578210400184156 /* MockSiteSettingsRemote.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1906,6 +1921,7 @@
 				261CF1B8255AE62D0090D8D3 /* PaymentGatewayRemote.swift in Sources */,
 				CE0A0F1522396BF00075ED8D /* ProductAttribute.swift in Sources */,
 				026CF620237D69D6009563D4 /* ProductVariationsRemote.swift in Sources */,
+				24638C2F25784EB200184156 /* MockOrderStatsRemoteV4.swift in Sources */,
 				4599FC5E24A62AA70056157A /* ProductTagsRemote.swift in Sources */,
 				7426CA0F21AF2C90004E9FFC /* SiteAPI.swift in Sources */,
 				D87F6151226591E10031A13B /* NullNetwork.swift in Sources */,
@@ -1921,6 +1937,7 @@
 				B518662220A097C200037A38 /* Network.swift in Sources */,
 				B572F69A21AC475C003EEFF0 /* DevicesRemote.swift in Sources */,
 				B518662420A099BF00037A38 /* AlamofireNetwork.swift in Sources */,
+				24638C1B2578210400184156 /* MockSiteSettingsRemote.swift in Sources */,
 				CE430676234BA7920073CBFF /* RefundListMapper.swift in Sources */,
 				45551F122523E7F1007EF104 /* UserAgent.swift in Sources */,
 				45CDAFAB2434CA9300F83C22 /* ProductCatalogVisibility.swift in Sources */,
@@ -1943,11 +1960,13 @@
 				74A1D26B21189B8100931DFA /* SiteVisitStatsItem.swift in Sources */,
 				B505F6EC20BEFDC200BB1B69 /* Loader.swift in Sources */,
 				74D3BD142114FE6900A6E85E /* MIContainer.swift in Sources */,
+				24638C3525784F9400184156 /* MockSiteVisitStatsRemote.swift in Sources */,
 				B5BB1D1220A255EC00112D92 /* OrderStatusEnum.swift in Sources */,
 				B5DAEFF02180DD5A0002356A /* NotificationsRemote.swift in Sources */,
 				020D07BE23D8570800FD9580 /* MediaListMapper.swift in Sources */,
 				74C8F06820EEB7BD00B6EDC9 /* OrderNotesMapper.swift in Sources */,
 				24F98C582502EA8800F49B68 /* FeatureFlagMapper.swift in Sources */,
+				24638C2925784E7300184156 /* MockLeaderboardsRemote.swift in Sources */,
 				4501068F2399B19500E24722 /* TaxClassRemote.swift in Sources */,
 				B53EF5342180F646003E146F /* DotcomValidator.swift in Sources */,
 				74046E1D217A6989007DD7BF /* SiteSetting.swift in Sources */,
@@ -1975,6 +1994,7 @@
 				B567AF2B20A0FA4200AB6C62 /* OrderListMapper.swift in Sources */,
 				02BDB83523EA98C800BCC63E /* String+HTML.swift in Sources */,
 				B505F6CF20BEE38B00BB1B69 /* Account.swift in Sources */,
+				24638C3B2578559100184156 /* MockProductReviewsRemote.swift in Sources */,
 				743E84EA22171C5800FAC9D7 /* ShipmentsRemote.swift in Sources */,
 				B59325D5217E4206000B0E8E /* NoteRange.swift in Sources */,
 				26B2F74324C545D50065CCC8 /* Leaderboard.swift in Sources */,

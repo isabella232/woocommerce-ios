@@ -2,12 +2,30 @@ import Foundation
 
 /// Protocol for `ProductReviewsRemote` mainly used for mocking.
 ///
-/// The required methods are intentionally incomplete. Feel free to add the other ones.
-///
 public protocol ProductReviewsRemoteProtocol {
-    func loadProductReview(for siteID: Int64,
-                           reviewID: Int64,
-                           completion: @escaping (Result<ProductReview, Error>) -> Void)
+
+    func loadAllProductReviews(
+        for siteID: Int64,
+        context: String?,
+        pageNumber: Int,
+        pageSize: Int,
+        products: [Int64]?,
+        status: ProductReviewStatus?,
+        completion: @escaping ([ProductReview]?, Error?) -> Void
+    )
+
+    func loadProductReview(
+        for siteID: Int64,
+        reviewID: Int64,
+        completion: @escaping (Result<ProductReview, Error>) -> Void
+    )
+
+    func updateProductReviewStatus(
+        for siteID: Int64,
+        reviewID: Int64,
+        statusKey: String,
+        completion: @escaping (ProductReview?, Error?) -> Void
+    )
 }
 
 /// Product reviews: Remote Endpoints

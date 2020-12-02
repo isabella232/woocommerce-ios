@@ -6,10 +6,10 @@ import Storage
 // MARK: - StatsStoreV4
 //
 public final class StatsStoreV4: Store {
-    private let siteVisitStatsRemote: SiteVisitStatsRemote
-    private let leaderboardsRemote: LeaderboardsRemote
-    private let orderStatsRemote: OrderStatsRemoteV4
-    private let productsRemote: ProductsRemote
+    private let siteVisitStatsRemote: SiteVisitStatsRemoteProtocol
+    private let leaderboardsRemote: LeaderboardsRemoteProtocol
+    private let orderStatsRemote: OrderStatsRemoteV4Protocol
+    private let productsRemote: ProductsRemoteProtocol
 
     public override init(dispatcher: Dispatcher, storageManager: StorageManagerType, network: Network) {
         self.siteVisitStatsRemote = SiteVisitStatsRemote(network: network)
@@ -18,6 +18,24 @@ public final class StatsStoreV4: Store {
         self.productsRemote = ProductsRemote(network: network)
         super.init(dispatcher: dispatcher, storageManager: storageManager, network: network)
     }
+
+    public init(
+        dispatcher: Dispatcher,
+        storageManager: StorageManagerType,
+        network: Network,
+        siteVisitStatsRemote: SiteVisitStatsRemoteProtocol,
+        leaderboardsRemote: LeaderboardsRemoteProtocol,
+        orderStatsRemote: OrderStatsRemoteV4Protocol,
+        productsRemote: ProductsRemoteProtocol
+    ) {
+        self.siteVisitStatsRemote = siteVisitStatsRemote
+        self.leaderboardsRemote = leaderboardsRemote
+        self.orderStatsRemote = orderStatsRemote
+        self.productsRemote = productsRemote
+
+        super.init(dispatcher: dispatcher, storageManager: storageManager, network: network)
+    }
+
 
     /// Registers for supported Actions.
     ///

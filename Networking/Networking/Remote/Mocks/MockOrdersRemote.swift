@@ -1,6 +1,6 @@
 import Foundation
 
-public class MockOrdersRemote: OrdersRemoteProtocol {
+public struct MockOrdersRemote: OrdersRemoteProtocol {
 
     private let objectGraph: MockObjectGraph
 

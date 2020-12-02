@@ -2,6 +2,7 @@ import UIKit
 import CoreData
 import Storage
 import class Networking.UserAgent
+import struct Networking.ScreenshotObjects
 
 import CocoaLumberjack
 import KeychainAccess
@@ -330,6 +331,12 @@ private extension AppDelegate {
 
             /// Trick found at: https://twitter.com/twannl/status/1232966604142653446
             UIApplication.shared.currentKeyWindow?.layer.speed = 100
+        }
+
+        if BuildConfiguration.shouldUseScreenshotsNetworkLayer {
+            let screenshotObjectGraph = ScreenshotObjects()
+            ServiceLocator.stores.authenticate(withObjectGraph: screenshotObjectGraph)
+            ServiceLocator.stores.updateDefaultStore(storeID: screenshotObjectGraph.defaultSite.siteID)
         }
     }
 }

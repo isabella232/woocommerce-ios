@@ -1,5 +1,6 @@
 import Foundation
 import Yosemite
+import protocol Networking.MockObjectGraph
 
 /// Abstracts the Stores coordination
 ///
@@ -21,6 +22,11 @@ protocol StoresManager {
     ///
     @discardableResult
     func authenticate(credentials: Credentials) -> StoresManager
+
+    /// Switches the internal state to Authenticated and registeres a mock object graph for use by the StoresManager
+    ///
+    @discardableResult
+    func authenticate(withObjectGraph objectGraph: MockObjectGraph) -> StoresManager
 
     /// Switches the state to a Deauthenticated one.
     ///

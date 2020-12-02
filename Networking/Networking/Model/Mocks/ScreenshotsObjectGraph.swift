@@ -101,6 +101,17 @@ public struct ScreenshotObjects: MockObjectGraph {
         Products.akoyaPearlShades,
         Products.malayaShades,
     ]
+
+    public var reviews: [ProductReview] = [
+        createProductReview(
+            product: Products.blackCoralShades,
+            customer: Customers.LydiaDonin,
+            status: .hold,
+            text: "Travel in style!",
+            rating: 5,
+            verified: true
+        ),
+    ]
 }
 
 struct i18n {

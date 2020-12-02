@@ -10,6 +10,7 @@ public protocol MockObjectGraph {
     var sites: [Site] { get }
     var orders: [Order] { get }
     var products: [Product] { get }
+    var reviews: [ProductReview] { get }
 
     func accountWithId(id: Int64) -> Account
     func accountSettingsWithUserId(userId: Int64) -> AccountSettings
@@ -75,6 +76,18 @@ struct MockCustomer {
     var shippingAddress: Address {
         return billingAddress
     }
+
+    var fullName: String {
+        return firstName + " " + lastName
+    }
+
+    var defaultEmail: String {
+        return firstName + "." + lastName + "@example.com"
+    }
+
+    var defaultGravatar: String {
+        baseResourceUrl + fullName.slugified!
+    }
 }
 
 // MARK: Product Accessors
@@ -102,6 +115,18 @@ extension MockObjectGraph {
 
     func orders(forSiteId siteId: Int64) -> [Order] {
         return orders.filter { $0.siteID == siteId }
+    }
+}
+
+// MARK: ProductReview Accessors
+extension MockObjectGraph {
+
+    func review(forSiteId siteId: Int64, reviewId: Int64) -> ProductReview? {
+        reviews(forSiteId: siteId).first { $0.reviewID == reviewId }
+    }
+
+    func reviews(forSiteId siteId: Int64) -> [ProductReview] {
+        reviews.filter { $0.siteID == siteId }
     }
 }
 
@@ -263,6 +288,33 @@ extension MockObjectGraph {
             shippingLines: [],
             coupons: [],
             refunds: []
+        )
+    }
+}
+
+// MARK: ProductReview Creation Helper
+extension MockObjectGraph {
+    static func createProductReview(
+        product: Product,
+        customer: MockCustomer,
+        daysOld: Int = 0,
+        status: ProductReviewStatus,
+        text: String,
+        rating: Int,
+        verified: Bool
+    ) -> ProductReview{
+        ProductReview(
+            siteID: 1,
+            reviewID: -1,
+            productID: product.productID,
+            dateCreated: Date(),
+            statusKey: status.rawValue,
+            reviewer: customer.fullName,
+            reviewerEmail: customer.email ?? customer.defaultEmail,
+            reviewerAvatarURL: customer.defaultGravatar,
+            review: text,
+            rating: rating,
+            verified: verified
         )
     }
 }

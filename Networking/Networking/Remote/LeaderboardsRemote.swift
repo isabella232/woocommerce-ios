@@ -1,9 +1,17 @@
 import Foundation
 
+public protocol LeaderboardsRemoteProtocol {
+    func loadLeaderboards(for siteID: Int64,
+                                 unit: StatsGranularityV4,
+                                 earliestDateToInclude: String,
+                                 latestDateToInclude: String,
+                                 quantity: Int,
+                                 completion: @escaping (Result<[Leaderboard], Error>) -> Void)
+}
 
 /// TopPerformersLeaderboard
 ///
-public class LeaderboardsRemote: Remote {
+public class LeaderboardsRemote: Remote, LeaderboardsRemoteProtocol {
     /// Fetch the leaderboards for a given site, depending on the given granularity of the `unit` parameter.
     ///
     /// - Parameters:

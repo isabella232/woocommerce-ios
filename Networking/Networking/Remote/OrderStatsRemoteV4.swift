@@ -1,9 +1,18 @@
 import Foundation
 import Alamofire
 
+public protocol OrderStatsRemoteV4Protocol {
+    func loadOrderStats(for siteID: Int64,
+                               unit: StatsGranularityV4,
+                               earliestDateToInclude: String,
+                               latestDateToInclude: String,
+                               quantity: Int,
+                               completion: @escaping (OrderStatsV4?, Error?) -> Void)
+}
+
 /// OrderStats: Remote Endpoints found in wc-admin's v4 API
 ///
-public final class OrderStatsRemoteV4: Remote {
+public final class OrderStatsRemoteV4: Remote, OrderStatsRemoteV4Protocol {
     /// Fetch the order stats for a given site, depending on the given granularity of the `unit` parameter.
     ///
     /// - Parameters:

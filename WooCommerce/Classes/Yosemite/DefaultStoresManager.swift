@@ -70,14 +70,7 @@ class DefaultStoresManager: StoresManager {
     ///
     init(sessionManager: SessionManager) {
         _sessionManager = sessionManager
-
-        if BuildConfiguration.shouldUseScreenshotsNetworkLayer {
-            let screenshotObjectGraph = ScreenshotObjects()
-            self.state = MockAuthenticatedState(objectGraph: screenshotObjectGraph)
-        }
-        else {
-            self.state = AuthenticatedState(sessionManager: sessionManager) ?? DeauthenticatedState()
-        }
+        self.state = AuthenticatedState(sessionManager: sessionManager) ?? DeauthenticatedState()
 
         isLoggedInSubject.send(isAuthenticated)
 
@@ -106,6 +99,14 @@ class DefaultStoresManager: StoresManager {
     func authenticate(credentials: Credentials) -> StoresManager {
         state = AuthenticatedState(credentials: credentials)
         sessionManager.defaultCredentials = credentials
+
+        return self
+    }
+
+    @discardableResult
+    func authenticate(withObjectGraph objectGraph: MockObjectGraph) -> StoresManager {
+        state = MockAuthenticatedState(objectGraph: objectGraph)
+        sessionManager.defaultCredentials = objectGraph.userCredentials
 
         return self
     }

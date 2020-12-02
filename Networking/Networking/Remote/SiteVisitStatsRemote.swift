@@ -1,9 +1,18 @@
 import Foundation
 import Alamofire
 
+public protocol SiteVisitStatsRemoteProtocol {
+    func loadSiteVisitorStats(for siteID: Int64,
+                                     siteTimezone: TimeZone?,
+                                     unit: StatGranularity,
+                                     latestDateToInclude: Date,
+                                     quantity: Int,
+                                     completion: @escaping (SiteVisitStats?, Error?) -> Void)
+}
+
 /// SiteVisitStats: Remote Endpoints
 ///
-public class SiteVisitStatsRemote: Remote {
+public class SiteVisitStatsRemote: Remote, SiteVisitStatsRemoteProtocol {
 
     /// Fetch the visitor stats for a given site up to the current day, week, month, or year (depending on the given granularity of the `unit` parameter).
     ///

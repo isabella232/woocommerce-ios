@@ -1,10 +1,16 @@
 import Foundation
 import Alamofire
 
+/// Protocol for `SiteSettingsRemote` mainly used for mocking.
+///
+public protocol SiteSettingsRemoteProtocol {
+    func loadGeneralSettings(for siteID: Int64, completion: @escaping ([SiteSetting]?, Error?) -> Void)
+    func loadProductSettings(for siteID: Int64, completion: @escaping ([SiteSetting]?, Error?) -> Void)
+}
 
 /// SiteSettings: Remote Endpoints
 ///
-public class SiteSettingsRemote: Remote {
+public class SiteSettingsRemote: Remote, SiteSettingsRemoteProtocol {
 
     /// Retrieves all of the general `SiteSetting`s for a given site.
     ///

@@ -6,7 +6,7 @@ import Storage
 // MARK: - ProductReviewStore
 //
 public final class ProductReviewStore: Store {
-    private let remote: ProductReviewsRemote
+    private let remote: ProductReviewsRemoteProtocol
 
     private lazy var productReviewFromNoteUseCase =
         RetrieveProductReviewFromNoteUseCase(network: network, derivedStorage: sharedDerivedStorage)
@@ -17,6 +17,11 @@ public final class ProductReviewStore: Store {
 
     public override init(dispatcher: Dispatcher, storageManager: StorageManagerType, network: Network) {
         self.remote = ProductReviewsRemote(network: network)
+        super.init(dispatcher: dispatcher, storageManager: storageManager, network: network)
+    }
+
+    public init(dispatcher: Dispatcher, storageManager: StorageManagerType, network: Network, remote: ProductReviewsRemoteProtocol) {
+        self.remote = remote
         super.init(dispatcher: dispatcher, storageManager: storageManager, network: network)
     }
 
@@ -79,6 +84,7 @@ private extension ProductReviewStore {
     func synchronizeProductReviews(siteID: Int64, pageNumber: Int, pageSize: Int, products: [Int64]? = nil, status: ProductReviewStatus? = nil,
                                    onCompletion: @escaping (Error?) -> Void) {
         remote.loadAllProductReviews(for: siteID,
+                                     context: nil,
                                      pageNumber: pageNumber,
                                      pageSize: pageSize,
                                      products: products,

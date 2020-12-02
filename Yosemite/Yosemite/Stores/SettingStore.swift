@@ -6,7 +6,7 @@ import Storage
 // MARK: - SettingStore
 //
 public class SettingStore: Store {
-    private let siteSettingsRemote: SiteSettingsRemote
+    private let siteSettingsRemote: SiteSettingsRemoteProtocol
     private let siteAPIRemote: SiteAPIRemoteProtocol
 
     private lazy var sharedDerivedStorage: StorageType = {
@@ -24,7 +24,7 @@ public class SettingStore: Store {
         storageManager: StorageManagerType,
         network: Network,
         siteAPIRemote: SiteAPIRemoteProtocol,
-        siteSettingsRemote: SiteSettingsRemote
+        siteSettingsRemote: SiteSettingsRemoteProtocol
     ) {
         self.siteSettingsRemote = siteSettingsRemote
         self.siteAPIRemote = siteAPIRemote
