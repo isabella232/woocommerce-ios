@@ -54,37 +54,52 @@ public struct ScreenshotObjects: MockObjectGraph {
     }
 
     public var orders: [Order] = [
-        Order(
-            siteID: 1,
-            orderID: 1,
-            parentID: 0,
-            customerID: 1,
-            number: "10000",
-            status: .pending,
-            currency: "CAD",
-            customerNote: nil,
-            dateCreated: Date(),
-            dateModified: Date(),
-            datePaid: nil,
-            discountTotal: "0",
-            discountTax: "0",
-            shippingTotal: "0",
-            shippingTax: "0",
-            total: "99.99",
-            totalTax: "5.23",
-            paymentMethodID: "fased",
-            paymentMethodTitle: "MasterCard",
-            items: [],
-            billingAddress: i18n.Customer1.billingAddress,
-            shippingAddress: i18n.Customer1.billingAddress,
-            shippingLines: [],
-            coupons: [],
-            refunds: []
-        )
+        createOrder(
+            number: 2201,
+            customer: Customers.MiraWorkman,
+            status: .processing,
+            total: 1310.00,
+            items: [
+                orderItem(from: Products.malayaShades, count: 4),
+                orderItem(from: Products.blackCoralShades, count: 5),
+            ]
+        ),
+        createOrder(
+            number: 2155,
+            customer: Customers.LydiaDonin,
+            status: .processing,
+            daysOld: 3,
+            total: 300
+        ),
+        createOrder(
+            number: 2116,
+            customer: Customers.ChanceVicarro,
+            status: .processing,
+            daysOld: 4,
+            total: 300
+        ),
+        createOrder(
+            number: 2104,
+            customer: Customers.MarcusCurtis,
+            status: .processing,
+            daysOld: 5,
+            total: 420
+        ),
+        createOrder(
+            number: 2087,
+            customer: Customers.MollyBloom,
+            status: .processing,
+            daysOld: 6,
+            total: 46.96
+        ),
     ]
 
     public var products: [Product] = [
         Products.roseGoldShades,
+        Products.coloradoShades,
+        Products.blackCoralShades,
+        Products.akoyaPearlShades,
+        Products.malayaShades,
     ]
 }
 
@@ -99,126 +114,48 @@ struct i18n {
         static let name = NSLocalizedString("Your WooCommerce Store", comment: "Store Name for the screenshot demo account")
         static let url = NSLocalizedString("example.com", comment: "")
     }
-
-    struct Customer1: MockCustomerConvertable {
-        static var firstName: String = NSLocalizedString("Phil", comment: "")
-        static var lastName: String = NSLocalizedString("Smith", comment: "")
-        static var company: String? = nil
-        static var address1: String = NSLocalizedString("123 Pleasant Place", comment: "")
-        static var address2: String? = nil
-        static var city: String = NSLocalizedString("New Hamfordshireton", comment: "")
-        static var state: String = NSLocalizedString("Montana", comment: "")
-        static var postCode: String = NSLocalizedString("60468", comment: "")
-        static var country: String = NSLocalizedString("USA", comment: "")
-        static var phone: String? = NSLocalizedString("+1 135 568 9846", comment: "")
-        static var email: String? = NSLocalizedString("phil.smith@example.com", comment: "")
-    }
-}
-
-protocol MockCustomerConvertable {
-    static var firstName: String { get }
-    static var lastName: String { get }
-    static var company: String? { get }
-    static var address1: String { get }
-    static var address2: String? { get }
-    static var city: String { get }
-    static var state: String { get }
-    static var postCode: String { get }
-    static var country: String { get }
-    static var phone: String? { get }
-    static var email: String? { get }
-
-    static var billingAddress: Address { get }
-}
-
-extension MockCustomerConvertable {
-    static var billingAddress: Address {
-        .init(
-            firstName: firstName,
-            lastName: lastName,
-            company: company,
-            address1: address1,
-            address2: address2,
-            city: city,
-            state: state,
-            postcode: postCode,
-            country: country,
-            phone: phone,
-            email: email
-        )
-    }
-
-    static var shippingAddress: Address {
-        return billingAddress
-    }
 }
 
 extension ScreenshotObjects {
-    struct Products {
-        static let roseGoldShades = Product(
-            siteID: 1,
-            productID: ProductId.next,
-            name: "Rose Gold shades",
-            slug: "rose-gold-shades",
-            permalink: "",
-            date: Date(),
-            dateCreated: Date(),
-            dateModified: nil,
-            dateOnSaleStart: nil,
-            dateOnSaleEnd: nil,
-            productTypeKey: "",
-            statusKey: "",
-            featured: true,
-            catalogVisibilityKey: "",
-            fullDescription: nil,
-            shortDescription: nil,
-            sku: nil,
-            price: "9.99",
-            regularPrice: nil,
-            salePrice: nil,
-            onSale: false,
-            purchasable: true,
-            totalSales: 99,
-            virtual: false,
-            downloadable: false,
-            downloads: [],
-            downloadLimit: 0,
-            downloadExpiry: 0,
-            buttonText: "Buy",
-            externalURL: nil,
-            taxStatusKey: "foo",
-            taxClass: nil,
-            manageStock: true,
-            stockQuantity: 468,
-            stockStatusKey: "",
-            backordersKey: "",
-            backordersAllowed: false,
-            backordered: false,
-            soldIndividually: true,
-            weight: "20 grams",
-            dimensions: .init(length: "10", width: "10", height: "10"),
-            shippingRequired: true,
-            shippingTaxable: true,
-            shippingClass: "",
-            shippingClassID: 0,
-            productShippingClass: .none,
-            reviewsAllowed: true,
-            averageRating: "5",
-            ratingCount: 64,
-            relatedIDs: [],
-            upsellIDs: [],
-            crossSellIDs: [],
-            parentID: 0,
-            purchaseNote: nil,
-            categories: [],
-            tags: [],
-            images: [],
-            attributes: [],
-            defaultAttributes: [],
-            variations: [],
-            groupedProducts: [],
-            menuOrder: 0
+
+    struct Customers {
+        static let MiraWorkman = MockCustomer(
+            firstName: "Mira",
+            lastName: "Workman",
+            company: nil,
+            address1: "123 Main Street",
+            address2: nil,
+            city: "San Francisco",
+            state: "CA",
+            postCode: "94119",
+            country: "US",
+            phone: nil,
+            email: nil
         )
+
+        static let LydiaDonin = MockCustomer(firstName: "Lydia", lastName: "Donin")
+        static let ChanceVicarro = MockCustomer(firstName: "Chance", lastName: "Vacarro")
+        static let MarcusCurtis = MockCustomer(firstName: "Marcus", lastName: "Curtis")
+        static let MollyBloom = MockCustomer(firstName: "Molly", lastName: "Bloom")
+    }
+
+    struct Products {
+
+        static let roseGoldShades = createProduct(
+            name: "Rose Gold Shades",
+            price: 199.0,
+            quantity: 0,
+            image: ProductImage.fromUrl("https://automatticwidgets.com/wp-content/uploads/2020/01/annie-theby-FlP6C5pkMKs-unsplash.png")
+        )
+
+        static let blackCoralShades = createProduct(name: "Black Coral Shades", price: 150.00, quantity: -24)
+
+        static let malayaShades = createProduct(name: "Malaya Shades", price: 140.00, quantity: 17)
+
+        static let coloradoShades = createProduct(name: "Colorado shades", price: 135, salePrice: 100, quantity: 98)
+
+        static let akoyaPearlShades = createProduct(name: "Akoya Pearl shades", price: 110, quantity: 23)
+
     }
 }
 

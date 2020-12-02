@@ -6,7 +6,7 @@ import Storage
 // MARK: - OrderStore
 //
 public class OrderStore: Store {
-    private let remote: OrdersRemote
+    private let remote: OrdersRemoteProtocol
 
     /// Shared private StorageType for use during the entire Orders sync process
     ///
@@ -17,6 +17,11 @@ public class OrderStore: Store {
     public override init(dispatcher: Dispatcher, storageManager: StorageManagerType, network: Network) {
         self.remote = OrdersRemote(network: network)
         super.init(dispatcher: dispatcher, storageManager: storageManager, network: network)
+    }
+
+    public init(dispatcher: Dispatcher, storageManager: StorageManagerType, network: Network, remote: OrdersRemoteProtocol) {
+        self.remote = remote
+        super.init(dispatcher: dispatcher, storageManager: storageManager, network: network )
     }
 
     /// Registers for supported Actions.

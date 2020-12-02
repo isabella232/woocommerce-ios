@@ -71,6 +71,7 @@
 		2412764B2576E34D006B8CFF /* MockObjectGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241276492576E34D006B8CFF /* MockObjectGraph.swift */; };
 		2412764C2576E34D006B8CFF /* ScreenshotsObjectGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2412764A2576E34D006B8CFF /* ScreenshotsObjectGraph.swift */; };
 		241276522576F5FA006B8CFF /* MockSiteAPIRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241276512576F5FA006B8CFF /* MockSiteAPIRemote.swift */; };
+		241276972576F918006B8CFF /* MockOrdersRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 241276962576F918006B8CFF /* MockOrdersRemote.swift */; };
 		24F98C522502E79800F49B68 /* FeatureFlagsRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F98C512502E79800F49B68 /* FeatureFlagsRemote.swift */; };
 		24F98C542502E8DD00F49B68 /* Bundle+Woo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F98C532502E8DD00F49B68 /* Bundle+Woo.swift */; };
 		24F98C562502EA4800F49B68 /* FeatureFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24F98C552502EA4800F49B68 /* FeatureFlag.swift */; };
@@ -467,6 +468,7 @@
 		241276492576E34D006B8CFF /* MockObjectGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockObjectGraph.swift; sourceTree = "<group>"; };
 		2412764A2576E34D006B8CFF /* ScreenshotsObjectGraph.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenshotsObjectGraph.swift; sourceTree = "<group>"; };
 		241276512576F5FA006B8CFF /* MockSiteAPIRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSiteAPIRemote.swift; sourceTree = "<group>"; };
+		241276962576F918006B8CFF /* MockOrdersRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockOrdersRemote.swift; sourceTree = "<group>"; };
 		24F98C512502E79800F49B68 /* FeatureFlagsRemote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlagsRemote.swift; sourceTree = "<group>"; };
 		24F98C532502E8DD00F49B68 /* Bundle+Woo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Woo.swift"; sourceTree = "<group>"; };
 		24F98C552502EA4800F49B68 /* FeatureFlag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeatureFlag.swift; sourceTree = "<group>"; };
@@ -858,6 +860,7 @@
 			children = (
 				241276422576E338006B8CFF /* MockAccountRemote.swift */,
 				241276432576E338006B8CFF /* MockProductRemote.swift */,
+				241276962576F918006B8CFF /* MockOrdersRemote.swift */,
 				241276512576F5FA006B8CFF /* MockSiteAPIRemote.swift */,
 			);
 			path = Mocks;
@@ -1793,6 +1796,7 @@
 				CE430670234B99F50073CBFF /* RefundsRemote.swift in Sources */,
 				B56C1EB620EA757B00D749F9 /* SiteListMapper.swift in Sources */,
 				B50A583921AD861700617455 /* APNSDevice.swift in Sources */,
+				241276972576F918006B8CFF /* MockOrdersRemote.swift in Sources */,
 				7426CA0D21AF27B9004E9FFC /* SiteAPIRemote.swift in Sources */,
 				D88D5A45230BC6F9007B6E01 /* ProductReviewsRemote.swift in Sources */,
 				B59325D4217E4206000B0E8E /* NoteBlock.swift in Sources */,

@@ -1,8 +1,36 @@
 import Foundation
 
+/// Protocol for `OrdersRemote` mainly used for mocking.
+///
+public protocol OrdersRemoteProtocol {
+    func loadAllOrders(for siteID: Int64,
+                              statusKey: String?,
+                              before: Date?,
+                              pageNumber: Int,
+                              pageSize: Int,
+    completion: @escaping (Result<[Order], Error>) -> Void)
+
+    func loadOrder(for siteID: Int64, orderID: Int64, completion: @escaping (Order?, Error?) -> Void)
+
+    func loadOrderNotes(for siteID: Int64, orderID: Int64, completion: @escaping ([OrderNote]?, Error?) -> Void)
+
+    func searchOrders(for siteID: Int64,
+                             keyword: String,
+                             pageNumber: Int,
+                             pageSize: Int,
+                             completion: @escaping ([Order]?, Error?) -> Void)
+
+    func updateOrder(from siteID: Int64, orderID: Int64, statusKey: OrderStatusEnum, completion: @escaping (Order?, Error?) -> Void)
+
+    func addOrderNote(for siteID: Int64, orderID: Int64, isCustomerNote: Bool, with note: String, completion: @escaping (OrderNote?, Error?) -> Void)
+
+    func countOrders(for siteID: Int64, statusKey: String, completion: @escaping (OrderCount?, Error?) -> Void)
+}
+
+
 /// Order: Remote Endpoints
 ///
-public class OrdersRemote: Remote {
+public class OrdersRemote: Remote, OrdersRemoteProtocol {
 
     /// Retrieves all of the `Orders` available.
     ///
