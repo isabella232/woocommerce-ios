@@ -3,8 +3,6 @@ import Alamofire
 
 /// Protocol for `AccountRemote` mainly used for mocking.
 ///
-/// The required methods are intentionally incomplete. Feel free to add the other ones.
-///
 public protocol AccountRemoteProtocol {
     func loadAccount(completion: @escaping (Account?, Error?) -> Void)
     func loadAccountSettings(for userID: Int64, completion: @escaping (AccountSettings?, Error?) -> Void)
