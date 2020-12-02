@@ -1,10 +1,15 @@
 import Foundation
 import Alamofire
 
+/// Protocol for `ProductsRemote` mainly used for mocking.
+///
+public protocol SiteAPIRemoteProtocol {
+    func loadAPIInformation(for siteID: Int64, completion: @escaping (SiteAPI?, Error?) -> Void)
+}
 
 /// Site API: Remote Endpoints
 ///
-public class SiteAPIRemote: Remote {
+public class SiteAPIRemote: Remote, SiteAPIRemoteProtocol {
 
     /// Calls the root wp-json endpoint (`/`) via the Jetpack tunnel for the provided siteID
     /// and parses the response for API information.

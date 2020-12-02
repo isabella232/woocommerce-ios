@@ -7,7 +7,7 @@ import Storage
 //
 public class SettingStore: Store {
     private let siteSettingsRemote: SiteSettingsRemote
-    private let siteAPIRemote: SiteAPIRemote
+    private let siteAPIRemote: SiteAPIRemoteProtocol
 
     private lazy var sharedDerivedStorage: StorageType = {
         return storageManager.newDerivedStorage()
@@ -16,6 +16,19 @@ public class SettingStore: Store {
     public override init(dispatcher: Dispatcher, storageManager: StorageManagerType, network: Network) {
         self.siteSettingsRemote = SiteSettingsRemote(network: network)
         self.siteAPIRemote = SiteAPIRemote(network: network)
+        super.init(dispatcher: dispatcher, storageManager: storageManager, network: network)
+    }
+
+    public init(
+        dispatcher: Dispatcher,
+        storageManager: StorageManagerType,
+        network: Network,
+        siteAPIRemote: SiteAPIRemoteProtocol,
+        siteSettingsRemote: SiteSettingsRemote
+    ) {
+        self.siteSettingsRemote = siteSettingsRemote
+        self.siteAPIRemote = siteAPIRemote
+
         super.init(dispatcher: dispatcher, storageManager: storageManager, network: network)
     }
 

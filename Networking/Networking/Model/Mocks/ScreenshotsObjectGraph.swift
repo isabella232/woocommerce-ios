@@ -32,6 +32,11 @@ public struct ScreenshotObjects: MockObjectGraph {
         gmtOffset: 0
     )
 
+    public let defaultSiteAPI = SiteAPI(siteID: 1, namespaces: [
+        WooAPIVersion.mark3.rawValue,
+        WooAPIVersion.mark4.rawValue,
+    ])
+
     public var sites: [Site] {
         return [defaultSite]
     }

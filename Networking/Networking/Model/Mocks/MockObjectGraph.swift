@@ -1,9 +1,11 @@
 import Foundation
 
 public protocol MockObjectGraph {
+
     var userCredentials: Credentials { get }
     var defaultAccount: Account { get }
     var defaultSite: Site { get }
+    var defaultSiteAPI: SiteAPI { get }
 
     var sites: [Site] { get }
     var orders: [Order] { get }
