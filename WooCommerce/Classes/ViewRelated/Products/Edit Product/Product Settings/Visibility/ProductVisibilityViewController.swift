@@ -210,6 +210,13 @@ private extension ProductVisibilityViewController {
         cell.selectionStyle = .default
         cell.textLabel?.text = row.description
         cell.accessoryType = row.visibility == visibility ? .checkmark : .none
+
+        // Hide separator between password protected and password when selected
+        if row == .passwordVisibility && row.visibility == visibility {
+            cell.hideSeparator()
+        } else {
+            cell.showSeparator()
+        }
     }
 
     func configurePasswordFieldCell(cell: TitleAndTextFieldWithImageTableViewCell, indexPath: IndexPath) {
